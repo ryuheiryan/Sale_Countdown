@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Moral Story Collection Sale</title>
+    <style>
+        @font-face {
+            font-family: 'Digital7';
+            src: url('digital-7.ttf') format('truetype');
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            background: url('BG.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .content {
+            z-index: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2); 
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Digital7', sans-serif;
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .time-box {
+            margin: 0 10px;
+            padding: 10px;
+            background: rgba(255, 0, 0, 0.2); 
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .time-box p {
+            margin: 0;
+            font-size: 2em;
+            color: red;
+        }
+
+        .time-box p:last-child {
+            font-size: 1em;
+            color: black;
+        }
+
+        h1, p {
+            color: rgb(0, 0, 0);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="content">
+    <h1 style="font-size:xxx-large;">Digital Moral Story Collection Sale</h1>
+    <p id="price" style="font-size: xx-large;">Current Price: 90 pesos</p>
+</div>
+
+<div class="timer">
+    <div class="time-box">
+        <p id="days"></p>
+        <p>DAYS</p>
+    </div>
+    <div class="time-box">
+        <p id="hours"></p>
+        <p>HOURS</p>
+    </div>
+    <div class="time-box">
+        <p id="minutes"></p>
+        <p>MINUTES</p>
+    </div>
+    <div class="time-box">
+        <p id="seconds"></p>
+        <p>SECONDS</p>
+    </div>
+    <div class="time-box">
+        <p id="milliseconds"></p>
+        <p>MS</p>
+    </div>
+</div>
+
+<button class="play-button" onclick="playMusic()">Music</button>
+
+<audio id="bgMusic" loop>
+    <source src="BG.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const saleEnd = new Date('August 20, 2024 23:59:59').getTime();
+        const saleStart = new Date('August 1, 2024 00:00:00').getTime();
+        const afterSale = new Date('August 30, 2024 23:59:59').getTime();
+
+        let distance, message;
+
+        if (now >= saleStart && now <= saleEnd) {
+            distance = saleEnd - now;
+            message = "Current Price: 90 pesos";
+        } else if (now > saleEnd && now <= afterSale) {
+            distance = afterSale - now;
+            message = "Current Price: 225 pesos";
+        } else if (now < saleStart) {
+            distance = saleStart - now;
+            message = "Sale starts soon!";
+        } else {
+            distance = 0;
+            message = "Sale has ended!";
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const milliseconds = distance % 1000;
+
+        document.getElementById('price').innerText = message;
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+        document.getElementById('minutes').innerText = minutes;
+        document.getElementById('seconds').innerText = seconds;
+        document.getElementById('milliseconds').innerText = milliseconds;
+
+        if (distance > 0) {
+            setTimeout(updateCountdown, 1);
+        }
+    }
+
+    function playMusic() {
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.play();
+    }
+
+    updateCountdown();
+</script>
+
+</body>
+</html>
+
