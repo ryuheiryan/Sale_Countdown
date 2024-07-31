@@ -31,40 +31,45 @@
             background: rgba(255, 255, 255, 0.2); 
             border-radius: 10px;
             margin-bottom: 20px;
+            max-width: 90%;
         }
 
         .timer {
             z-index: 1;
             display: flex;
             justify-content: center;
-            padding: 20px;
+            padding: 10px;
             border-radius: 10px;
             font-family: 'Digital7', sans-serif;
             color: red;
             margin-bottom: 20px;
+            max-width: 90%;
+            flex-wrap: wrap;
         }
 
         .time-box {
-            margin: 0 10px;
+            margin: 5px;
             padding: 10px;
             background: rgba(255, 0, 0, 0.2); 
             border-radius: 5px;
             text-align: center;
+            min-width: 60px;
         }
 
         .time-box p {
             margin: 0;
-            font-size: 2em;
+            font-size: 1.5em;
             color: red;
         }
 
         .time-box p:last-child {
-            font-size: 1em;
+            font-size: 0.8em;
             color: black;
         }
 
         h1, p {
             color: rgb(0, 0, 0);
+            margin: 5px 0;
         }
 
         .play-button {
@@ -79,6 +84,29 @@
             font-size: 1.2em;
             cursor: pointer;
             z-index: 2;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: large;
+            }
+
+            p {
+                font-size: medium;
+            }
+
+            .time-box p {
+                font-size: 1em;
+            }
+
+            .time-box p:last-child {
+                font-size: 0.6em;
+            }
+
+            .play-button {
+                font-size: 1em;
+                padding: 5px 10px;
+            }
         }
     </style>
 </head>
@@ -120,25 +148,22 @@
     <source src="BG.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <script>
     function updateCountdown() {
         const now = new Date().getTime();
